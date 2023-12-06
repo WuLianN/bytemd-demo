@@ -12,7 +12,10 @@ import math from '@bytemd/plugin-math'
 import mediumZoom from '@bytemd/plugin-medium-zoom'
 import mermaid from '@bytemd/plugin-mermaid'
 import breaks from '@bytemd/plugin-breaks'
+import highlightTheme from '@ziuchen/bytemd-plugin-highlight-theme'
+import hls from '@ziuchen/bytemd-plugin-highlight-theme/dist/highlights.json'
 import 'bytemd/dist/index.css'
+import zh_Hans from '@ziuchen/bytemd-plugin-highlight-theme/locales/zh_Hans.json'
 
 // @ts-ignore
 import { Editor } from "@bytemd/vue-next";
@@ -77,7 +80,11 @@ const plugins = [
     locale: mermaidLocales[localeKey],
   }),
   breaks(),
-  themes()
+  themes(),
+  highlightTheme({
+    highlights: hls,
+    locale: zh_Hans
+  })
 ];
 
 function handleChange(v: any) {

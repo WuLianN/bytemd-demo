@@ -32,6 +32,9 @@ dependencies:
   '@bytemd/vue-next':
     specifier: ^1.21.0
     version: registry.npmmirror.com/@bytemd/vue-next@1.21.0(vue@3.3.10)
+  '@ziuchen/bytemd-plugin-highlight-theme':
+    specifier: ^1.0.6
+    version: 1.0.6(bytemd@1.21.0)
   bytemd:
     specifier: ^1.21.0
     version: registry.npmmirror.com/bytemd@1.21.0
@@ -63,6 +66,15 @@ devDependencies:
     version: registry.npmmirror.com/vue-tsc@1.8.24(typescript@5.3.2)
 
 packages:
+
+  /@bytemd/plugin-highlight@1.21.0(bytemd@1.21.0):
+    resolution: {integrity: sha512-JM9rwzj9pFBXVwxmD9mgGIQPO4cTFVHvDhffS93IMK+tqvo0Vw76zDIqJWT3f421j8iNxffGsVQQs6389u3Z9A==}
+    peerDependencies:
+      bytemd: ^1.5.0
+    dependencies:
+      bytemd: registry.npmmirror.com/bytemd@1.21.0
+      highlight.js: 11.9.0
+    dev: false
 
   /@esbuild/android-arm64@0.19.8:
     resolution: {integrity: sha512-B8JbS61bEunhfx8kasogFENgQfr/dIp+ggYXwTqdbMAgGDhRa3AaPpQMuQU0rNxDLECj6FhDzk1cF9WHMVwrtA==}
@@ -362,14 +374,71 @@ packages:
     dev: true
     optional: true
 
+  /@types/js-yaml@4.0.8:
+    resolution: {integrity: sha512-m6jnPk1VhlYRiLFm3f8X9Uep761f+CK8mHyS65LutH2OhmBF0BeMEjHgg05usH8PLZMWWc/BUR9RPmkvpWnyRA==}
+    dev: false
+
+  /@types/mdast@3.0.15:
+    resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
+    dependencies:
+      '@types/unist': 2.0.10
+    dev: false
+
   /@types/node@20.10.3:
     resolution: {integrity: sha512-XJavIpZqiXID5Yxnxv3RUDKTN5b81ddNC3ecsA0SoFXz/QU8OGBwZGMomiq0zw+uuqbL/krztv/DINAQ/EV4gg==}
     dependencies:
       undici-types: 5.26.5
     dev: true
 
+  /@types/unist@2.0.10:
+    resolution: {integrity: sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==}
+    dev: false
+
   /@vue/devtools-api@6.5.1:
     resolution: {integrity: sha512-+KpckaAQyfbvshdDW5xQylLni1asvNSGme1JFs8I1+/H5pHEhqUKMEQD/qn3Nx5+/nycBq11qAEi8lk+LXI2dA==}
+    dev: false
+
+  /@ziuchen/bytemd-plugin-highlight-theme@1.0.6(bytemd@1.21.0):
+    resolution: {integrity: sha512-mZlX9VKTJ/9lpiObC9F8ZOQjedZH/EvNYYrStBS9DtqaZNxqZhy/OVADSsOKju7aCS9olrZT/h8VIQyIwpm5Kg==}
+    peerDependencies:
+      bytemd: ^1.20.2
+    dependencies:
+      '@bytemd/plugin-frontmatter': registry.npmjs.org/@bytemd/plugin-frontmatter@1.21.0(bytemd@1.21.0)
+      '@bytemd/plugin-highlight': 1.21.0(bytemd@1.21.0)
+      bytemd: registry.npmmirror.com/bytemd@1.21.0
+    dev: false
+
+  /argparse@2.0.1:
+    resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+    dev: false
+
+  /bail@2.0.2:
+    resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
+    dev: false
+
+  /character-entities@2.0.2:
+    resolution: {integrity: sha512-shx7oQ0Awen/BRIdkjkvz54PnEEI/EjwXDSIZp86/KKdbafHh1Df/RYGBhn4hbe2+uKC9FnT5UCEdyPz3ai9hQ==}
+    dev: false
+
+  /decode-named-character-reference@1.0.2:
+    resolution: {integrity: sha512-O8x12RzrUF8xyVcY0KJowWsmaJxQbmy0/EtnNtHRpsOcT7dFk5W598coHqBVpmWo1oQQfsCqfCmkZN5DJrZVdg==}
+    dependencies:
+      character-entities: 2.0.2
+    dev: false
+
+  /extend@3.0.2:
+    resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
+    dev: false
+
+  /fault@2.0.1:
+    resolution: {integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==}
+    dependencies:
+      format: 0.2.2
+    dev: false
+
+  /format@0.2.2:
+    resolution: {integrity: sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==}
+    engines: {node: '>=0.4.x'}
     dev: false
 
   /fsevents@2.3.3:
@@ -380,13 +449,180 @@ packages:
     dev: true
     optional: true
 
+  /highlight.js@11.9.0:
+    resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /is-buffer@2.0.5:
+    resolution: {integrity: sha512-i2R6zNFDwgEHJyQUtJEk0XFi1i0dPFn/oqjK3/vPCcDeJvW5NQ83V8QbicfF1SupOaB0h8ntgBC2YiE7dfyctQ==}
+    engines: {node: '>=4'}
+    dev: false
+
+  /is-plain-obj@4.1.0:
+    resolution: {integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /js-yaml@4.1.0:
+    resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
+    hasBin: true
+    dependencies:
+      argparse: 2.0.1
+    dev: false
+
   /juejin-markdown-themes@1.32.1:
     resolution: {integrity: sha512-z2nuXibwbb4NnantYQ33KQh+ouJ40swnHaSBz0vxsn316IxyGI86BdqgzcES1lZy5DAdNmzO/bcdQmfkzo6TEg==}
+    dev: false
+
+  /longest-streak@3.1.0:
+    resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
+    dev: false
+
+  /mdast-util-frontmatter@1.0.1:
+    resolution: {integrity: sha512-JjA2OjxRqAa8wEG8hloD0uTU0kdn8kbtOWpPP94NBkfAlbxn4S8gCGf/9DwFtEeGPXrDcNXdiDjVaRdUFqYokw==}
+    dependencies:
+      '@types/mdast': 3.0.15
+      mdast-util-to-markdown: 1.5.0
+      micromark-extension-frontmatter: 1.1.1
+    dev: false
+
+  /mdast-util-phrasing@3.0.1:
+    resolution: {integrity: sha512-WmI1gTXUBJo4/ZmSk79Wcb2HcjPJBzM1nlI/OUWA8yk2X9ik3ffNbBGsU+09BFmXaL1IBb9fiuvq6/KMiNycSg==}
+    dependencies:
+      '@types/mdast': 3.0.15
+      unist-util-is: 5.2.1
+    dev: false
+
+  /mdast-util-to-markdown@1.5.0:
+    resolution: {integrity: sha512-bbv7TPv/WC49thZPg3jXuqzuvI45IL2EVAr/KxF0BSdHsU0ceFHOmwQn6evxAh1GaoK/6GQ1wp4R4oW2+LFL/A==}
+    dependencies:
+      '@types/mdast': 3.0.15
+      '@types/unist': 2.0.10
+      longest-streak: 3.1.0
+      mdast-util-phrasing: 3.0.1
+      mdast-util-to-string: 3.2.0
+      micromark-util-decode-string: 1.1.0
+      unist-util-visit: 4.1.2
+      zwitch: 2.0.4
+    dev: false
+
+  /mdast-util-to-string@3.2.0:
+    resolution: {integrity: sha512-V4Zn/ncyN1QNSqSBxTrMOLpjr+IKdHl2v3KVLoWmDPscP4r9GcCi71gjgvUV1SFSKh92AjAG4peFuBl2/YgCJg==}
+    dependencies:
+      '@types/mdast': 3.0.15
+    dev: false
+
+  /micromark-extension-frontmatter@1.1.1:
+    resolution: {integrity: sha512-m2UH9a7n3W8VAH9JO9y01APpPKmNNNs71P0RbknEmYSaZU5Ghogv38BYO94AI5Xw6OYfxZRdHZZ2nYjs/Z+SZQ==}
+    dependencies:
+      fault: 2.0.1
+      micromark-util-character: 1.2.0
+      micromark-util-symbol: 1.1.0
+      micromark-util-types: 1.1.0
+    dev: false
+
+  /micromark-util-character@1.2.0:
+    resolution: {integrity: sha512-lXraTwcX3yH/vMDaFWCQJP1uIszLVebzUa3ZHdrgxr7KEU/9mL4mVgCpGbyhvNLNlauROiNUq7WN5u7ndbY6xg==}
+    dependencies:
+      micromark-util-symbol: 1.1.0
+      micromark-util-types: 1.1.0
+    dev: false
+
+  /micromark-util-decode-numeric-character-reference@1.1.0:
+    resolution: {integrity: sha512-m9V0ExGv0jB1OT21mrWcuf4QhP46pH1KkfWy9ZEezqHKAxkj4mPCy3nIH1rkbdMlChLHX531eOrymlwyZIf2iw==}
+    dependencies:
+      micromark-util-symbol: 1.1.0
+    dev: false
+
+  /micromark-util-decode-string@1.1.0:
+    resolution: {integrity: sha512-YphLGCK8gM1tG1bd54azwyrQRjCFcmgj2S2GoJDNnh4vYtnL38JS8M4gpxzOPNyHdNEpheyWXCTnnTDY3N+NVQ==}
+    dependencies:
+      decode-named-character-reference: 1.0.2
+      micromark-util-character: 1.2.0
+      micromark-util-decode-numeric-character-reference: 1.1.0
+      micromark-util-symbol: 1.1.0
+    dev: false
+
+  /micromark-util-symbol@1.1.0:
+    resolution: {integrity: sha512-uEjpEYY6KMs1g7QfJ2eX1SQEV+ZT4rUD3UcF6l57acZvLNK7PBZL+ty82Z1qhK1/yXIY4bdx04FKMgR0g4IAag==}
+    dev: false
+
+  /micromark-util-types@1.1.0:
+    resolution: {integrity: sha512-ukRBgie8TIAcacscVHSiddHjO4k/q3pnedmzMQ4iwDcK0FtFCohKOlFbaOL/mPgfnPsL3C1ZyxJa4sbWrBl3jg==}
+    dev: false
+
+  /remark-frontmatter@4.0.1:
+    resolution: {integrity: sha512-38fJrB0KnmD3E33a5jZC/5+gGAC2WKNiPw1/fdXJvijBlhA7RCsvJklrYJakS0HedninvaCYW8lQGf9C918GfA==}
+    dependencies:
+      '@types/mdast': 3.0.15
+      mdast-util-frontmatter: 1.0.1
+      micromark-extension-frontmatter: 1.1.1
+      unified: 10.1.2
+    dev: false
+
+  /trough@2.1.0:
+    resolution: {integrity: sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==}
     dev: false
 
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
     dev: true
+
+  /unified@10.1.2:
+    resolution: {integrity: sha512-pUSWAi/RAnVy1Pif2kAoeWNBa3JVrx0MId2LASj8G+7AiHWoKZNTomq6LG326T68U7/e263X6fTdcXIy7XnF7Q==}
+    dependencies:
+      '@types/unist': 2.0.10
+      bail: 2.0.2
+      extend: 3.0.2
+      is-buffer: 2.0.5
+      is-plain-obj: 4.1.0
+      trough: 2.1.0
+      vfile: 5.3.7
+    dev: false
+
+  /unist-util-is@5.2.1:
+    resolution: {integrity: sha512-u9njyyfEh43npf1M+yGKDGVPbY/JWEemg5nH05ncKPfi+kBbKBJoTdsogMu33uhytuLlv9y0O7GH7fEdwLdLQw==}
+    dependencies:
+      '@types/unist': 2.0.10
+    dev: false
+
+  /unist-util-stringify-position@3.0.3:
+    resolution: {integrity: sha512-k5GzIBZ/QatR8N5X2y+drfpWG8IDBzdnVj6OInRNWm1oXrzydiaAT2OQiA8DPRRZyAKb9b6I2a6PxYklZD0gKg==}
+    dependencies:
+      '@types/unist': 2.0.10
+    dev: false
+
+  /unist-util-visit-parents@5.1.3:
+    resolution: {integrity: sha512-x6+y8g7wWMyQhL1iZfhIPhDAs7Xwbn9nRosDXl7qoPTSCy0yNxnKc+hWokFifWQIDGi154rdUqKvbCa4+1kLhg==}
+    dependencies:
+      '@types/unist': 2.0.10
+      unist-util-is: 5.2.1
+    dev: false
+
+  /unist-util-visit@4.1.2:
+    resolution: {integrity: sha512-MSd8OUGISqHdVvfY9TPhyK2VdUrPgxkUtWSuMHF6XAAFuL4LokseigBnZtPnJMu+FbynTkFNnFlyjxpVKujMRg==}
+    dependencies:
+      '@types/unist': 2.0.10
+      unist-util-is: 5.2.1
+      unist-util-visit-parents: 5.1.3
+    dev: false
+
+  /vfile-message@3.1.4:
+    resolution: {integrity: sha512-fa0Z6P8HUrQN4BZaX05SIVXic+7kE3b05PWAtPuYP9QLHsLKYR7/AlLW3NtOrpXRLeawpDLMsVkmk5DG0NXgWw==}
+    dependencies:
+      '@types/unist': 2.0.10
+      unist-util-stringify-position: 3.0.3
+    dev: false
+
+  /vfile@5.3.7:
+    resolution: {integrity: sha512-r7qlzkgErKjobAmyNIkkSpizsFPYiUPuJb5pNW1RB4JcYVZhs4lIbVqk8XPk033CV/1z8ss5pkax8SuhGpcG8g==}
+    dependencies:
+      '@types/unist': 2.0.10
+      is-buffer: 2.0.5
+      unist-util-stringify-position: 3.0.3
+      vfile-message: 3.1.4
+    dev: false
 
   /vue-router@4.2.5(vue@3.3.10):
     resolution: {integrity: sha512-DIUpKcyg4+PTQKfFPX88UWhlagBEBEfJ5A8XDXRJLUnZOvcpMF8o/dnL90vpVkGaPbjvXazV/rC1qBKrZlFugw==}
@@ -395,6 +631,25 @@ packages:
     dependencies:
       '@vue/devtools-api': 6.5.1
       vue: registry.npmmirror.com/vue@3.3.10(typescript@5.3.2)
+    dev: false
+
+  /zwitch@2.0.4:
+    resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
+    dev: false
+
+  registry.npmjs.org/@bytemd/plugin-frontmatter@1.21.0(bytemd@1.21.0):
+    resolution: {integrity: sha512-P+qwPRSwHOwADsJtA+vtv98bnWjRd4V7eYIc9XJsDDj8dDQByXk7ikcgGqgtosBfHlHclP4DSr7ppwFixYbKQw==, registry: https://mirrors.huaweicloud.com/repository/npm/, tarball: https://registry.npmjs.org/@bytemd/plugin-frontmatter/-/plugin-frontmatter-1.21.0.tgz}
+    id: registry.npmjs.org/@bytemd/plugin-frontmatter/1.21.0
+    name: '@bytemd/plugin-frontmatter'
+    version: 1.21.0
+    peerDependencies:
+      bytemd: ^1.5.0
+    dependencies:
+      '@types/js-yaml': 4.0.8
+      bytemd: registry.npmmirror.com/bytemd@1.21.0
+      js-yaml: 4.1.0
+      remark-frontmatter: 4.0.1
+      vfile: 5.3.7
     dev: false
 
   registry.npmmirror.com/@babel/helper-string-parser@7.23.4:
@@ -1496,10 +1751,10 @@ packages:
     version: 7.1.2
     dependencies:
       '@types/hast': registry.npmmirror.com/@types/hast@2.3.8
-      '@types/unist': registry.npmmirror.com/@types/unist@2.0.10
+      '@types/unist': 2.0.10
       hastscript: registry.npmmirror.com/hastscript@7.2.0
       property-information: registry.npmmirror.com/property-information@6.4.0
-      vfile: registry.npmmirror.com/vfile@5.3.7
+      vfile: 5.3.7
       vfile-location: registry.npmmirror.com/vfile-location@4.1.0
       web-namespaces: registry.npmmirror.com/web-namespaces@2.0.1
     dev: false
@@ -1525,7 +1780,7 @@ packages:
       parse5: registry.npmmirror.com/parse5@6.0.1
       unist-util-position: registry.npmmirror.com/unist-util-position@4.0.4
       unist-util-visit: registry.npmmirror.com/unist-util-visit@4.1.2
-      vfile: registry.npmmirror.com/vfile@5.3.7
+      vfile: 5.3.7
       web-namespaces: registry.npmmirror.com/web-namespaces@2.0.1
       zwitch: registry.npmmirror.com/zwitch@2.0.4
     dev: false
@@ -1738,8 +1993,8 @@ packages:
     name: mdast-util-definitions
     version: 5.1.2
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@3.0.15
-      '@types/unist': registry.npmmirror.com/@types/unist@2.0.10
+      '@types/mdast': 3.0.15
+      '@types/unist': 2.0.10
       unist-util-visit: registry.npmmirror.com/unist-util-visit@4.1.2
     dev: false
 
@@ -1877,7 +2132,7 @@ packages:
     name: mdast-util-phrasing
     version: 3.0.1
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@3.0.15
+      '@types/mdast': 3.0.15
       unist-util-is: registry.npmmirror.com/unist-util-is@5.2.1
     dev: false
 
@@ -1902,7 +2157,7 @@ packages:
     version: 1.5.0
     dependencies:
       '@types/mdast': registry.npmmirror.com/@types/mdast@3.0.15
-      '@types/unist': registry.npmmirror.com/@types/unist@2.0.10
+      '@types/unist': 2.0.10
       longest-streak: registry.npmmirror.com/longest-streak@3.1.0
       mdast-util-phrasing: registry.npmmirror.com/mdast-util-phrasing@3.0.1
       mdast-util-to-string: registry.npmmirror.com/mdast-util-to-string@3.2.0
@@ -1916,7 +2171,7 @@ packages:
     name: mdast-util-to-string
     version: 3.2.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@3.0.15
+      '@types/mdast': 3.0.15
     dev: false
 
   registry.npmmirror.com/medium-zoom@1.1.0:
@@ -1965,15 +2220,15 @@ packages:
       micromark-factory-space: registry.npmmirror.com/micromark-factory-space@1.1.0
       micromark-factory-title: registry.npmmirror.com/micromark-factory-title@1.1.0
       micromark-factory-whitespace: registry.npmmirror.com/micromark-factory-whitespace@1.1.0
-      micromark-util-character: registry.npmmirror.com/micromark-util-character@1.2.0
+      micromark-util-character: 1.2.0
       micromark-util-chunked: registry.npmmirror.com/micromark-util-chunked@1.1.0
       micromark-util-classify-character: registry.npmmirror.com/micromark-util-classify-character@1.1.0
       micromark-util-html-tag-name: registry.npmmirror.com/micromark-util-html-tag-name@1.2.0
       micromark-util-normalize-identifier: registry.npmmirror.com/micromark-util-normalize-identifier@1.1.0
       micromark-util-resolve-all: registry.npmmirror.com/micromark-util-resolve-all@1.1.0
       micromark-util-subtokenize: registry.npmmirror.com/micromark-util-subtokenize@1.1.0
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
-      micromark-util-types: registry.npmmirror.com/micromark-util-types@1.1.0
+      micromark-util-symbol: 1.1.0
+      micromark-util-types: 1.1.0
       uvu: registry.npmmirror.com/uvu@0.5.6
     dev: false
 
@@ -2093,9 +2348,9 @@ packages:
     name: micromark-factory-destination
     version: 1.1.0
     dependencies:
-      micromark-util-character: registry.npmmirror.com/micromark-util-character@1.2.0
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
-      micromark-util-types: registry.npmmirror.com/micromark-util-types@1.1.0
+      micromark-util-character: 1.2.0
+      micromark-util-symbol: 1.1.0
+      micromark-util-types: 1.1.0
     dev: false
 
   registry.npmmirror.com/micromark-factory-label@1.1.0:
@@ -2103,9 +2358,9 @@ packages:
     name: micromark-factory-label
     version: 1.1.0
     dependencies:
-      micromark-util-character: registry.npmmirror.com/micromark-util-character@1.2.0
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
-      micromark-util-types: registry.npmmirror.com/micromark-util-types@1.1.0
+      micromark-util-character: 1.2.0
+      micromark-util-symbol: 1.1.0
+      micromark-util-types: 1.1.0
       uvu: registry.npmmirror.com/uvu@0.5.6
     dev: false
 
@@ -2114,8 +2369,8 @@ packages:
     name: micromark-factory-space
     version: 1.1.0
     dependencies:
-      micromark-util-character: registry.npmmirror.com/micromark-util-character@1.2.0
-      micromark-util-types: registry.npmmirror.com/micromark-util-types@1.1.0
+      micromark-util-character: 1.2.0
+      micromark-util-types: 1.1.0
     dev: false
 
   registry.npmmirror.com/micromark-factory-title@1.1.0:
@@ -2124,9 +2379,9 @@ packages:
     version: 1.1.0
     dependencies:
       micromark-factory-space: registry.npmmirror.com/micromark-factory-space@1.1.0
-      micromark-util-character: registry.npmmirror.com/micromark-util-character@1.2.0
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
-      micromark-util-types: registry.npmmirror.com/micromark-util-types@1.1.0
+      micromark-util-character: 1.2.0
+      micromark-util-symbol: 1.1.0
+      micromark-util-types: 1.1.0
     dev: false
 
   registry.npmmirror.com/micromark-factory-whitespace@1.1.0:
@@ -2135,9 +2390,9 @@ packages:
     version: 1.1.0
     dependencies:
       micromark-factory-space: registry.npmmirror.com/micromark-factory-space@1.1.0
-      micromark-util-character: registry.npmmirror.com/micromark-util-character@1.2.0
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
-      micromark-util-types: registry.npmmirror.com/micromark-util-types@1.1.0
+      micromark-util-character: 1.2.0
+      micromark-util-symbol: 1.1.0
+      micromark-util-types: 1.1.0
     dev: false
 
   registry.npmmirror.com/micromark-util-character@1.2.0:
@@ -2154,7 +2409,7 @@ packages:
     name: micromark-util-chunked
     version: 1.1.0
     dependencies:
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
+      micromark-util-symbol: 1.1.0
     dev: false
 
   registry.npmmirror.com/micromark-util-classify-character@1.1.0:
@@ -2162,9 +2417,9 @@ packages:
     name: micromark-util-classify-character
     version: 1.1.0
     dependencies:
-      micromark-util-character: registry.npmmirror.com/micromark-util-character@1.2.0
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
-      micromark-util-types: registry.npmmirror.com/micromark-util-types@1.1.0
+      micromark-util-character: 1.2.0
+      micromark-util-symbol: 1.1.0
+      micromark-util-types: 1.1.0
     dev: false
 
   registry.npmmirror.com/micromark-util-combine-extensions@1.1.0:
@@ -2181,7 +2436,7 @@ packages:
     name: micromark-util-decode-numeric-character-reference
     version: 1.1.0
     dependencies:
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
+      micromark-util-symbol: 1.1.0
     dev: false
 
   registry.npmmirror.com/micromark-util-decode-string@1.1.0:
@@ -2190,9 +2445,9 @@ packages:
     version: 1.1.0
     dependencies:
       decode-named-character-reference: registry.npmmirror.com/decode-named-character-reference@1.0.2
-      micromark-util-character: registry.npmmirror.com/micromark-util-character@1.2.0
+      micromark-util-character: 1.2.0
       micromark-util-decode-numeric-character-reference: registry.npmmirror.com/micromark-util-decode-numeric-character-reference@1.1.0
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
+      micromark-util-symbol: 1.1.0
     dev: false
 
   registry.npmmirror.com/micromark-util-encode@1.1.0:
@@ -2212,7 +2467,7 @@ packages:
     name: micromark-util-normalize-identifier
     version: 1.1.0
     dependencies:
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
+      micromark-util-symbol: 1.1.0
     dev: false
 
   registry.npmmirror.com/micromark-util-resolve-all@1.1.0:
@@ -2220,7 +2475,7 @@ packages:
     name: micromark-util-resolve-all
     version: 1.1.0
     dependencies:
-      micromark-util-types: registry.npmmirror.com/micromark-util-types@1.1.0
+      micromark-util-types: 1.1.0
     dev: false
 
   registry.npmmirror.com/micromark-util-sanitize-uri@1.2.0:
@@ -2228,9 +2483,9 @@ packages:
     name: micromark-util-sanitize-uri
     version: 1.2.0
     dependencies:
-      micromark-util-character: registry.npmmirror.com/micromark-util-character@1.2.0
+      micromark-util-character: 1.2.0
       micromark-util-encode: registry.npmmirror.com/micromark-util-encode@1.1.0
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
+      micromark-util-symbol: 1.1.0
     dev: false
 
   registry.npmmirror.com/micromark-util-subtokenize@1.1.0:
@@ -2239,8 +2494,8 @@ packages:
     version: 1.1.0
     dependencies:
       micromark-util-chunked: registry.npmmirror.com/micromark-util-chunked@1.1.0
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
-      micromark-util-types: registry.npmmirror.com/micromark-util-types@1.1.0
+      micromark-util-symbol: 1.1.0
+      micromark-util-types: 1.1.0
       uvu: registry.npmmirror.com/uvu@0.5.6
     dev: false
 
@@ -2266,7 +2521,7 @@ packages:
       decode-named-character-reference: registry.npmmirror.com/decode-named-character-reference@1.0.2
       micromark-core-commonmark: registry.npmmirror.com/micromark-core-commonmark@1.1.0
       micromark-factory-space: registry.npmmirror.com/micromark-factory-space@1.1.0
-      micromark-util-character: registry.npmmirror.com/micromark-util-character@1.2.0
+      micromark-util-character: 1.2.0
       micromark-util-chunked: registry.npmmirror.com/micromark-util-chunked@1.1.0
       micromark-util-combine-extensions: registry.npmmirror.com/micromark-util-combine-extensions@1.1.0
       micromark-util-decode-numeric-character-reference: registry.npmmirror.com/micromark-util-decode-numeric-character-reference@1.1.0
@@ -2275,8 +2530,8 @@ packages:
       micromark-util-resolve-all: registry.npmmirror.com/micromark-util-resolve-all@1.1.0
       micromark-util-sanitize-uri: registry.npmmirror.com/micromark-util-sanitize-uri@1.2.0
       micromark-util-subtokenize: registry.npmmirror.com/micromark-util-subtokenize@1.1.0
-      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@1.1.0
-      micromark-util-types: registry.npmmirror.com/micromark-util-types@1.1.0
+      micromark-util-symbol: 1.1.0
+      micromark-util-types: 1.1.0
       uvu: registry.npmmirror.com/uvu@0.5.6
     transitivePeerDependencies:
       - supports-color
@@ -2622,7 +2877,7 @@ packages:
     name: unist-util-is
     version: 5.2.1
     dependencies:
-      '@types/unist': registry.npmmirror.com/@types/unist@2.0.10
+      '@types/unist': 2.0.10
     dev: false
 
   registry.npmmirror.com/unist-util-position@4.0.4:
@@ -2630,7 +2885,7 @@ packages:
     name: unist-util-position
     version: 4.0.4
     dependencies:
-      '@types/unist': registry.npmmirror.com/@types/unist@2.0.10
+      '@types/unist': 2.0.10
     dev: false
 
   registry.npmmirror.com/unist-util-stringify-position@3.0.3:
@@ -2646,7 +2901,7 @@ packages:
     name: unist-util-visit-parents
     version: 5.1.3
     dependencies:
-      '@types/unist': registry.npmmirror.com/@types/unist@2.0.10
+      '@types/unist': 2.0.10
       unist-util-is: registry.npmmirror.com/unist-util-is@5.2.1
     dev: false
 
@@ -2685,8 +2940,8 @@ packages:
     name: vfile-location
     version: 4.1.0
     dependencies:
-      '@types/unist': registry.npmmirror.com/@types/unist@2.0.10
-      vfile: registry.npmmirror.com/vfile@5.3.7
+      '@types/unist': 2.0.10
+      vfile: 5.3.7
     dev: false
 
   registry.npmmirror.com/vfile-message@3.1.4:
