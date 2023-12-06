@@ -7,21 +7,14 @@
 import Editor from '@/components/Editor.vue'
 import { useRoute } from 'vue-router'
 import { ref } from 'vue'
-// @ts-ignore
-import themes from 'juejin-markdown-themes'
 
 const content = ref('')
 const uploadUrl = 'http://localhost:8000/upload/file'
 
 const route = useRoute()
-console.log(route)
+
 if (route.query?.id) {
   getExampleMd()
-} else {
-  content.value = `---
-# themes: ${Object.keys(themes).join(', ')}
-theme: juejin
----`
 }
 
 function contentChange(value: any) {
@@ -30,10 +23,6 @@ function contentChange(value: any) {
 
 function getExampleMd() {
   fetch('/src/examples/examples.md').then(res => res.text()).then(md => {
-    md = md.replace(
-      '# themes:',
-      '# themes: ' + Object.keys(themes).join(', '))
-
     content.value = md
   })
 }

@@ -15,10 +15,9 @@ import breaks from '@bytemd/plugin-breaks'
 import 'bytemd/dist/index.css'
 
 // @ts-ignore
-import themes from 'juejin-markdown-themes'
-// @ts-ignore
 import { Editor } from "@bytemd/vue-next";
 import { request } from '@/utils/index.ts'
+import themes from '@/plugins/themes.ts'
 
 const props = defineProps({
   content: {
@@ -78,18 +77,7 @@ const plugins = [
     locale: mermaidLocales[localeKey],
   }),
   breaks(),
-  {
-    // @ts-ignore
-    viewerEffect({ file }) {
-      const $style = document.createElement('style');
-      $style.innerHTML =
-        themes[file.frontmatter?.theme]?.style ?? themes.juejin.style;
-      document.head.appendChild($style);
-      return () => {
-        $style.remove();
-      };
-    },
-  },
+  themes()
 ];
 
 function handleChange(v: any) {
