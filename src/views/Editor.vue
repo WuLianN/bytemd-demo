@@ -1,6 +1,6 @@
 
 <template>
-  <Editor :content="content" @contentChange="contentChange" />
+  <Editor :content="content" @contentChange="contentChange" :uploadUrl="uploadUrl" />
 </template>
 
 <script setup lang="ts">
@@ -11,6 +11,7 @@ import { ref } from 'vue'
 import themes from 'juejin-markdown-themes'
 
 const content = ref('')
+const uploadUrl = 'http://localhost:8000/upload/file'
 
 const route = useRoute()
 console.log(route)

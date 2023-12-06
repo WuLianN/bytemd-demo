@@ -1,6 +1,6 @@
 
 <template>
-  <Editor :value="content" :plugins="plugins" @change="handleChange" :locale="locale" />
+  <Editor :value="content" :plugins="plugins" @change="handleChange" :locale="locale" :uploadImages="uploadImages" />
 </template>
 
 <script setup lang="ts">
@@ -18,9 +18,14 @@ import 'bytemd/dist/index.css'
 import themes from 'juejin-markdown-themes'
 // @ts-ignore
 import { Editor } from "@bytemd/vue-next";
+import { request } from '@/utils/index.ts'
 
-defineProps({
+const props = defineProps({
   content: {
+    type: String,
+    default: ''
+  },
+  uploadUrl: {
     type: String,
     default: ''
   }
@@ -91,7 +96,27 @@ function handleChange(v: any) {
   emits('contentChange', v)
 }
 
+function uploadImages(fileList: Array<File>) {
+  return Promise.all(fileList.map(file => {
+    return upload(file)
+  }))
+}
 
+function upload(file: File) {
+  const formData = new FormData();
+  formData.append('type', '1')
+  formData.append('file', file)
+
+  return request(props.uploadUrl, {
+    method: 'POST',
+    'content-type': 'multipart/form-data',
+    body: formData
+  }).then((res: { json: () => any; }) => res.json())
+    .then((result: { file_access_url: any; }) => {
+      const { file_access_url: url } = result
+      return { url }
+    })
+}
 </script>
 
 <style scoped>
