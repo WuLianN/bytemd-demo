@@ -3,7 +3,7 @@
 ### 技术
 * [bytemd](https://github.com/bytedance/bytemd)
 * [掘金Markdown主题](https://github.com/xitu/juejin-markdown-themes) 
-* [相关插件]https://github.com/ZiuChen/bytemd-plugin
+* [相关插件](https://github.com/ZiuChen/bytemd-plugin)
 
 
 ### 效果

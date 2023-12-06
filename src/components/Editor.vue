@@ -19,7 +19,9 @@ import zh_Hans from '@ziuchen/bytemd-plugin-highlight-theme/locales/zh_Hans.json
 
 // @ts-ignore
 import { Editor } from "@bytemd/vue-next";
+// @ts-ignore
 import { request } from '@/utils/index.ts'
+// @ts-ignore
 import themes from '@/plugins/themes.ts'
 
 const props = defineProps({
