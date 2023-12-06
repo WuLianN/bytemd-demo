@@ -16,7 +16,7 @@ function setStyle(style: string) {
 }
 
 export default function themes(): BytemdPlugin {
-  const actionItems = []
+  const actionItems: { title: string; style: string }[] = []
   for (const key in themesMap) {
     actionItems.push({
       title: key,
@@ -24,11 +24,75 @@ export default function themes(): BytemdPlugin {
     })
   }
 
+  const info = {
+    data: '',
+    status: 0,
+    position: {
+      start: {
+        line: 0,
+        column: 0,
+        offset: 0
+      },
+      end: {
+        line: 0,
+        column: 0,
+        offset: 0
+      }
+    }
+  }
+
   return {
     viewerEffect({ file }) {
+      // @ts-ignore
       const style = themesMap[file.frontmatter?.theme]?.style ?? themesMap.juejin.style;
       setStyle(style)
     },
+    remark: (processor) =>
+      // @ts-ignore
+      processor.use(() => (tree, file) => {
+        // no frontmatter block, return directly and use default theme
+        if (!file.frontmatter) {
+          info.status = 0
+          // reset position
+          info.position = {
+            start: {
+              line: 0,
+              column: 0,
+              offset: 0
+            },
+            end: {
+              line: 0,
+              column: 0,
+              offset: 0
+            }
+          }
+          return
+        }
+
+        // get position of frontmatter block and save it to global variable
+        const { start, end } = tree.children[0].position
+        info.position = { start, end }
+
+        const { theme } = file.frontmatter as {
+          theme?: string
+        }
+
+        // no theme field, use default theme
+        if (!theme) {
+          info.status = 1
+          return
+        }
+
+        // use theme field if it exists
+        if (actionItems.find(item => item.title === theme)) {
+          info.data = theme
+          info.status = 2
+          return
+        }
+
+        // theme field is invalid
+        throw new Error(`Invalid markdown theme: ${theme}, please check your options.`)
+      }),
     actions: [
       {
         title: 'markdown 主题',
@@ -46,6 +110,20 @@ export default function themes(): BytemdPlugin {
               type: 'action',
               click({ editor }) {
                 setStyle(style)
+
+                const v = editor.getValue()
+                const { start, end } = info.position
+                const frontmatter = v.slice(start.offset, end.offset)
+
+                const newFrontmatter =
+                  info.status === 0
+                    ? `---\ntheme: ${title}\n---\n`
+                    : info.status === 1
+                      ? frontmatter.replace('---', `---\ntheme: ${title}`)
+                      : frontmatter.replace(info.data, title)
+
+                editor.setValue(v.replace(frontmatter, newFrontmatter))
+
                 editor.focus()
               },
             },
