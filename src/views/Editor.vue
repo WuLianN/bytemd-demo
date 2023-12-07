@@ -22,7 +22,7 @@ function contentChange(value: any) {
 }
 
 function getExampleMd() {
-  fetch('/src/examples/examples.md').then(res => res.text()).then(md => {
+  fetch(import.meta.env.VITE_APP_BASE_API + '/src/examples/examples.md').then(res => res.text()).then(md => {
     content.value = md
   })
 }
