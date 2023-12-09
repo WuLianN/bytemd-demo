@@ -13,9 +13,13 @@ import mediumZoom from '@bytemd/plugin-medium-zoom'
 import mermaid from '@bytemd/plugin-mermaid'
 import breaks from '@bytemd/plugin-breaks'
 import highlightTheme from '@ziuchen/bytemd-plugin-highlight-theme'
+import imageZoom from '@ziuchen/bytemd-plugin-image-zoom'
+import align from '@ziuchen/bytemd-plugin-align'
 import hls from '@ziuchen/bytemd-plugin-highlight-theme/dist/highlights.json'
 import 'bytemd/dist/index.css'
-import zh_Hans from '@ziuchen/bytemd-plugin-highlight-theme/locales/zh_Hans.json'
+import zh_Hans_highlight_theme from '@ziuchen/bytemd-plugin-highlight-theme/locales/zh_Hans.json'
+import zh_Hans_image_zoom from '@ziuchen/bytemd-plugin-image-zoom/locales/zh_Hans.json'
+import zh_Hans_algin from '@ziuchen/bytemd-plugin-align/locales/zh_Hans.json'
 
 // @ts-ignore
 import { Editor } from "@bytemd/vue-next";
@@ -31,7 +35,7 @@ const props = defineProps({
   },
   upload: {
     type: Function,
-    default: () => {}
+    default: () => { }
   }
 })
 
@@ -68,6 +72,7 @@ const localeKey = 'zh_Hans'
 const locale = locales[localeKey]
 
 const plugins = [
+  breaks(),
   gfm({
     locale: gfmLocales[localeKey],
   }),
@@ -78,14 +83,19 @@ const plugins = [
     locale: mathLocales[localeKey],
   }),
   mediumZoom(),
+  align({
+    locale: zh_Hans_algin
+  }),
+  imageZoom({
+    locale: zh_Hans_image_zoom
+  }),
   mermaid({
     locale: mermaidLocales[localeKey],
   }),
-  breaks(),
   theme(),
   highlightTheme({
     highlights: hls,
-    locale: zh_Hans
+    locale: zh_Hans_highlight_theme
   })
 ];
 
@@ -100,8 +110,4 @@ function uploadImages(fileList: Array<File>) {
 }
 </script>
 
-<style scoped>
-:deep(.bytemd) {
-  height: calc(100vh - 50px) !important;
-}
-</style>
+<style scoped></style>

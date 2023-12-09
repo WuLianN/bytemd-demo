@@ -32,9 +32,15 @@ dependencies:
   '@bytemd/vue-next':
     specifier: ^1.21.0
     version: registry.npmmirror.com/@bytemd/vue-next@1.21.0(vue@3.3.10)
+  '@ziuchen/bytemd-plugin-align':
+    specifier: ^1.0.1
+    version: 1.0.1(bytemd@1.21.0)
   '@ziuchen/bytemd-plugin-highlight-theme':
     specifier: ^1.0.6
     version: 1.0.6(bytemd@1.21.0)
+  '@ziuchen/bytemd-plugin-image-zoom':
+    specifier: ^1.0.1
+    version: 1.0.1(bytemd@1.21.0)
   bytemd:
     specifier: ^1.21.0
     version: registry.npmmirror.com/bytemd@1.21.0
@@ -404,6 +410,14 @@ packages:
     resolution: {integrity: sha512-+KpckaAQyfbvshdDW5xQylLni1asvNSGme1JFs8I1+/H5pHEhqUKMEQD/qn3Nx5+/nycBq11qAEi8lk+LXI2dA==}
     dev: false
 
+  /@ziuchen/bytemd-plugin-align@1.0.1(bytemd@1.21.0):
+    resolution: {integrity: sha512-XTVk2LaIO9PPcLcbIT02WuM/ZBF3ZG8q7MO74qu8M2N8chBjAU4uMYhWeYV9587chkvxn/xVe6o4UEZOcLhgZw==}
+    peerDependencies:
+      bytemd: ^1.20.2
+    dependencies:
+      bytemd: registry.npmmirror.com/bytemd@1.21.0
+    dev: false
+
   /@ziuchen/bytemd-plugin-highlight-theme@1.0.6(bytemd@1.21.0):
     resolution: {integrity: sha512-mZlX9VKTJ/9lpiObC9F8ZOQjedZH/EvNYYrStBS9DtqaZNxqZhy/OVADSsOKju7aCS9olrZT/h8VIQyIwpm5Kg==}
     peerDependencies:
@@ -411,6 +425,14 @@ packages:
     dependencies:
       '@bytemd/plugin-frontmatter': registry.npmjs.org/@bytemd/plugin-frontmatter@1.21.0(bytemd@1.21.0)
       '@bytemd/plugin-highlight': 1.21.0(bytemd@1.21.0)
+      bytemd: registry.npmmirror.com/bytemd@1.21.0
+    dev: false
+
+  /@ziuchen/bytemd-plugin-image-zoom@1.0.1(bytemd@1.21.0):
+    resolution: {integrity: sha512-jSGhDsQAlgOM7YW8lFPWWZPMN+H1Ia3Gd5gKE3GmoxnL046MTdL6xm7S86/fiIvn5QzvzUqlHYctFenL3evvfw==}
+    peerDependencies:
+      bytemd: ^1.20.2
+    dependencies:
       bytemd: registry.npmmirror.com/bytemd@1.21.0
     dev: false
 
