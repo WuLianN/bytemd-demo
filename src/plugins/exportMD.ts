@@ -1,6 +1,6 @@
 import type { BytemdPlugin } from 'bytemd'
 
-export default function themes(): BytemdPlugin {
+export default function exportMD(): BytemdPlugin {
   return {
     actions: [{
       title: '导出 markdown',

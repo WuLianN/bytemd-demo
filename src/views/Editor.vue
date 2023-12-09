@@ -16,9 +16,9 @@
 import Editor from '@/components/Editor.vue'
 import { useRoute } from 'vue-router'
 import { ref, watch } from 'vue'
-// @ts-ignore
 import { examples } from '@/examples/index.js'
 import { debounce } from 'lodash-es'
+import { request } from '@/utils/index.ts'
 
 const title = ref('')
 const content = ref('')
@@ -48,7 +48,7 @@ function getExampleMd() {
 function save(title: string, content: string) {
   window.localStorage.setItem('title', title)
 
-  fetch('/save', {
+  request('/save', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ async function upload(file: File) {
   formData.append('type', '1')
   formData.append('file', file)
 
-  return fetch(uploadUrl, {
+  return request(uploadUrl, {
     method: 'POST',
     body: formData
   }).then((res: { json: () => any; }) => res.json())

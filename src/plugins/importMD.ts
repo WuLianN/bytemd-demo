@@ -1,6 +1,6 @@
 import type { BytemdPlugin } from 'bytemd'
 
-export default function themes(): BytemdPlugin {
+export default function importMD(): BytemdPlugin {
   return {
     actions: [{
       title: '导入 markdown',
@@ -22,15 +22,16 @@ export default function themes(): BytemdPlugin {
               }
             ]
           }
+          // @ts-ignore showOpenFilePicker 有兼容性问题
           const fileList = await window.showOpenFilePicker(options)
 
           if (fileList && fileList.length > 0) {
             const file = await fileList[0].getFile()
             const fileReader = new FileReader()
-            const result = await fileReader.readAsText(file)
+            await fileReader.readAsText(file)
 
             fileReader.addEventListener('load', () => {
-              editor.setValue(fileReader.result)
+              return editor.setValue(fileReader.result as string)
             })
           }
           return
