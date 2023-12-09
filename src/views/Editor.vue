@@ -46,6 +46,8 @@ function getExampleMd() {
 }
 
 function save(title: string, content: string) {
+  window.localStorage.setItem('title', title)
+
   fetch('/save', {
     method: 'POST',
     headers: {

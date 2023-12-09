@@ -15,6 +15,8 @@ import breaks from '@bytemd/plugin-breaks'
 import highlightTheme from '@ziuchen/bytemd-plugin-highlight-theme'
 import imageZoom from '@ziuchen/bytemd-plugin-image-zoom'
 import align from '@ziuchen/bytemd-plugin-align'
+import exportMD from '@/plugins/exportMD.ts'
+import importMD from '@/plugins/importMD.ts'
 import hls from '@ziuchen/bytemd-plugin-highlight-theme/dist/highlights.json'
 import 'bytemd/dist/index.css'
 import zh_Hans_highlight_theme from '@ziuchen/bytemd-plugin-highlight-theme/locales/zh_Hans.json'
@@ -96,7 +98,9 @@ const plugins = [
   highlightTheme({
     highlights: hls,
     locale: zh_Hans_highlight_theme
-  })
+  }),
+  exportMD(),
+  importMD()
 ];
 
 function handleChange(v: any) {
