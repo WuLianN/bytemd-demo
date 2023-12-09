@@ -22,7 +22,7 @@ import { Editor } from "@bytemd/vue-next";
 // @ts-ignore
 import { request } from '@/utils/index.ts'
 // @ts-ignore
-import themes from '@/plugins/themes.ts'
+import theme from '@/plugins/theme.ts'
 
 const props = defineProps({
   content: {
@@ -82,7 +82,7 @@ const plugins = [
     locale: mermaidLocales[localeKey],
   }),
   breaks(),
-  themes(),
+  theme(),
   highlightTheme({
     highlights: hls,
     locale: zh_Hans
