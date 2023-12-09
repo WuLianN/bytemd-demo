@@ -29,9 +29,9 @@ const props = defineProps({
     type: String,
     default: ''
   },
-  uploadUrl: {
-    type: String,
-    default: ''
+  upload: {
+    type: Function,
+    default: () => {}
   }
 })
 
@@ -95,24 +95,8 @@ function handleChange(v: any) {
 
 function uploadImages(fileList: Array<File>) {
   return Promise.all(fileList.map(file => {
-    return upload(file)
+    return props.upload(file)
   }))
-}
-
-function upload(file: File) {
-  const formData = new FormData();
-  formData.append('type', '1')
-  formData.append('file', file)
-
-  return request(props.uploadUrl, {
-    method: 'POST',
-    'content-type': 'multipart/form-data',
-    body: formData
-  }).then((res: { json: () => any; }) => res.json())
-    .then((result: { file_access_url: any; }) => {
-      const { file_access_url: url } = result
-      return { url }
-    })
 }
 </script>
 

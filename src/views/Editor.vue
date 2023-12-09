@@ -9,7 +9,7 @@
       <button class="btn with-padding" @click="publish">发布</button>
     </div>
   </header>
-  <Editor :content="content" @contentChange="contentChange" :uploadUrl="uploadUrl" />
+  <Editor :content="content" @contentChange="contentChange" :upload="upload" />
 </template>
 
 <script setup lang="ts">
@@ -22,9 +22,10 @@ import { debounce } from 'lodash-es'
 
 const title = ref('')
 const content = ref('')
-const uploadUrl = 'http://localhost:8000/upload/file'
+const uploadUrl = import.meta.env.VITE_APP_BASE_API + '/upload/file'
 const status = ref('文章将自动保存至草稿箱')
 const debounceWaitMs = 300
+const debounceSave = debounce(save, debounceWaitMs)
 
 const route = useRoute()
 
@@ -44,13 +45,11 @@ function getExampleMd() {
   content.value = examples
 }
 
-const debounceSave = debounce(save, debounceWaitMs)
-
 function save(title: string, content: string) {
   fetch('/save', {
     method: 'POST',
     headers: {
-      'content-type': 'application/json'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       title: title,
@@ -66,6 +65,25 @@ function save(title: string, content: string) {
 function goDraftBox() {}
 
 function publish() {}
+
+async function upload(file: File) {
+  const formData = new FormData();
+  formData.append('type', '1')
+  formData.append('file', file)
+
+  return fetch(uploadUrl, {
+    method: 'POST',
+    body: formData
+  }).then((res: { json: () => any; }) => res.json())
+    .then((result: { file_access_url: any; }) => {
+      const { file_access_url: url } = result
+      return { url }
+    })
+    .catch(() => {
+      console.log('上传失败')
+      return ''
+    })
+}
 </script>
 
 <style scoped lang="scss">
