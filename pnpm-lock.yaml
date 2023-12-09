@@ -41,6 +41,9 @@ dependencies:
   juejin-markdown-themes:
     specifier: ^1.32.1
     version: 1.32.1
+  lodash-es:
+    specifier: ^4.17.21
+    version: 4.17.21
   vue:
     specifier: ^3.3.10
     version: registry.npmmirror.com/vue@3.3.10(typescript@5.3.2)
@@ -553,6 +556,10 @@ packages:
 
   /juejin-markdown-themes@1.32.1:
     resolution: {integrity: sha512-z2nuXibwbb4NnantYQ33KQh+ouJ40swnHaSBz0vxsn316IxyGI86BdqgzcES1lZy5DAdNmzO/bcdQmfkzo6TEg==}
+    dev: false
+
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: false
 
   /longest-streak@3.1.0:
@@ -1241,7 +1248,7 @@ packages:
       '@types/mdast': registry.npmmirror.com/@types/mdast@3.0.15
       codemirror-ssr: registry.npmmirror.com/codemirror-ssr@0.65.0(@types/codemirror@5.60.15)
       hast-util-sanitize: registry.npmmirror.com/hast-util-sanitize@4.1.0
-      lodash-es: registry.npmmirror.com/lodash-es@4.17.21
+      lodash-es: 4.17.21
       rehype-raw: registry.npmmirror.com/rehype-raw@6.1.1
       rehype-sanitize: registry.npmmirror.com/rehype-sanitize@5.0.1
       rehype-stringify: registry.npmmirror.com/rehype-stringify@9.0.4
@@ -1721,7 +1728,7 @@ packages:
     version: 7.0.10
     dependencies:
       d3: registry.npmmirror.com/d3@7.8.5
-      lodash-es: registry.npmmirror.com/lodash-es@4.17.21
+      lodash-es: 4.17.21
     dev: false
 
   registry.npmmirror.com/dayjs@1.11.10:
@@ -2065,12 +2072,6 @@ packages:
     version: 2.0.1
     dev: false
 
-  registry.npmmirror.com/lodash-es@4.17.21:
-    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==, registry: https://mirrors.huaweicloud.com/repository/npm/, tarball: https://registry.npmmirror.com/lodash-es/-/lodash-es-4.17.21.tgz}
-    name: lodash-es
-    version: 4.17.21
-    dev: false
-
   registry.npmmirror.com/lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==, registry: https://mirrors.huaweicloud.com/repository/npm/, tarball: https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz}
     name: lodash
@@ -2316,7 +2317,7 @@ packages:
       dompurify: registry.npmmirror.com/dompurify@3.0.6
       elkjs: registry.npmmirror.com/elkjs@0.8.2
       khroma: registry.npmmirror.com/khroma@2.1.0
-      lodash-es: registry.npmmirror.com/lodash-es@4.17.21
+      lodash-es: 4.17.21
       mdast-util-from-markdown: registry.npmmirror.com/mdast-util-from-markdown@1.3.1
       non-layered-tidy-tree-layout: registry.npmmirror.com/non-layered-tidy-tree-layout@2.0.2
       stylis: registry.npmmirror.com/stylis@4.3.0

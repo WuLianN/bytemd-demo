@@ -2,11 +2,11 @@
 <template>
   <header class="editor-header">
     <div class="left-box"></div>
-    <input placeholder="输入文章标题..." spellcheck="false" maxlength="80" class="title-input">
+    <input placeholder="输入文章标题..." spellcheck="false" maxlength="80" class="title-input" v-model="title">
     <div class="right-box">
-      <div title="" class="status-text with-padding">文章将自动保存至草稿箱</div>
-      <button class="btn btn-outline with-padding">草稿箱</button>
-      <button class="btn with-padding">发布</button>
+      <div title="" class="status-text with-padding">{{ status }}</div>
+      <button class="btn btn-outline with-padding" @click="goDraftBox">草稿箱</button>
+      <button class="btn with-padding" @click="publish">发布</button>
     </div>
   </header>
   <Editor :content="content" @contentChange="contentChange" :uploadUrl="uploadUrl" />
@@ -15,12 +15,16 @@
 <script setup lang="ts">
 import Editor from '@/components/Editor.vue'
 import { useRoute } from 'vue-router'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 // @ts-ignore
 import { examples } from '@/examples/index.js'
+import { debounce } from 'lodash-es'
 
+const title = ref('')
 const content = ref('')
 const uploadUrl = 'http://localhost:8000/upload/file'
+const status = ref('文章将自动保存至草稿箱')
+const debounceWaitMs = 300
 
 const route = useRoute()
 
@@ -28,16 +32,40 @@ if (route.query?.id) {
   getExampleMd()
 }
 
-function contentChange(value: any) {
+watch([title, content], () => {
+  debounceSave(title.value, content.value)
+})
+
+function contentChange(value: string) {
   content.value = value
 }
 
 function getExampleMd() {
-  // fetch(import.meta.env.VITE_APP_BASE_API + '/src/examples/examples.md').then(res => res.text()).then(md => {
-  //   content.value = md
-  // })
   content.value = examples
 }
+
+const debounceSave = debounce(save, debounceWaitMs)
+
+function save(title: string, content: string) {
+  fetch('/save', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      title: title,
+      content: content
+    })
+  }).then(() => {
+    status.value = '保存成功'
+  }).catch(() => {
+    console.log('保存失败')
+  })
+}
+
+function goDraftBox() {}
+
+function publish() {}
 </script>
 
 <style scoped lang="scss">
