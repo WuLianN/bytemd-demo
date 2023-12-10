@@ -10,30 +10,9 @@ export default function importMD(): BytemdPlugin {
       position: 'right',
       handler: {
         type: 'action',
-        click: async ({ editor }) => {
-          const options = {
-            multiple: false,
-            types: [
-              {
-                description: 'markdown',
-                accept: {
-                  'text/markdown': ['.md', '.MD']
-                }
-              }
-            ]
-          }
-          // @ts-ignore showOpenFilePicker 有兼容性问题
-          const fileList = await window.showOpenFilePicker(options)
-
-          if (fileList && fileList.length > 0) {
-            const file = await fileList[0].getFile()
-            const fileReader = new FileReader()
-            await fileReader.readAsText(file)
-
-            fileReader.addEventListener('load', () => {
-              return editor.setValue(fileReader.result as string)
-            })
-          }
+        click: async ({ }) => {
+          const modal = document.querySelector('.import-modal') as HTMLElement
+          modal.style.display = 'block'
           return
         }
       }

@@ -1,6 +1,7 @@
 
 <template>
   <Editor :value="content" :plugins="plugins" @change="handleChange" :locale="locale" :uploadImages="uploadImages" />
+  <Dialog @fileChange="fileChange" />
 </template>
 
 <script setup lang="ts">
@@ -24,7 +25,8 @@ import zh_Hans_image_zoom from '@ziuchen/bytemd-plugin-image-zoom/locales/zh_Han
 import zh_Hans_algin from '@ziuchen/bytemd-plugin-align/locales/zh_Hans.json'
 
 import { Editor } from "@bytemd/vue-next"
-import theme from '@/plugins/theme.ts'
+import theme from '../plugins/theme.ts'
+import Dialog from './Dialog.vue'
 
 const props = defineProps({
   content: {
@@ -108,6 +110,21 @@ function uploadImages(fileList: Array<File>) {
     return props.upload(file)
   }))
 }
+
+async function fileChange(file: File) {
+  const fileReader = new FileReader()
+  fileReader.readAsText(file)
+
+  fileReader.addEventListener('load', () => {
+    emits('contentChange', fileReader.result as string)
+  })
+}
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+$header-height: 64px;
+
+:deep(.bytemd) {
+  height: calc(100vh - $header-height) !important;
+}
+</style>

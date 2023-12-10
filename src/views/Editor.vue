@@ -91,10 +91,6 @@ async function upload(file: File) {
 <style scoped lang="scss">
 $header-height: 64px;
 
-:deep(.bytemd) {
-  height: calc(100vh - $header-height) !important;
-}
-
 .editor-header {
   width: 100%;
   display: flex;
